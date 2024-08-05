@@ -25,3 +25,4 @@ if transcript.status == aai.TranscriptStatus.error:
     print(transcript.error)
 else:
     print(transcript.text)
+#hi
