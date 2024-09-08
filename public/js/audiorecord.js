@@ -150,7 +150,7 @@
 //                 });
 
 
-const Listing = require("../models/listing.js");
+// const Listing = require("../models/listing.js");
 
 
 let mediaRecorder;
@@ -191,9 +191,10 @@ document.getElementById('uploadButton').addEventListener('click', async (req,res
         const formData = new FormData();
         const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
         formData.append('audio', audioBlob, 'recording.mp3');
-        let { id } = req.params.id;
-        let listingID = await Listing.findById(id); 
-        const response = await fetch(`/listings/${listingID}/uploads`, {
+        let { id } = listingId;
+        console.log(listingId);
+        // let listingID = await Listing.findById(id); 
+        const response = await fetch(`/listings/${id}/uploads`, {
             method: 'POST',
             body: formData
         });
