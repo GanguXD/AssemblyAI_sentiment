@@ -49,7 +49,7 @@ app.use(express.json());
 
 app.post('/listings/:id/uploads', upload.single('audio'), async (req, res) => {
     const filePath = path.join(__dirname, req.file.path);
-
+    console.log(filePath);
     try {
         const response = await drive.files.create({
             requestBody: {
