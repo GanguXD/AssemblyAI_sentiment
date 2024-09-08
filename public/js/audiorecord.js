@@ -194,7 +194,7 @@ document.getElementById('uploadButton').addEventListener('click', async (req,res
         let { id } = listingId;
         console.log(listingId);
         // let listingID = await Listing.findById(id); 
-        const response = await fetch(`/listings/${id}/uploads`, {
+        const response = await fetch(`/listings/66cd5612041d0ba864a903e4/uploads`, {
             method: 'POST',
             body: formData
         });
