@@ -1,3 +1,4 @@
+
 // let mediaRecorder;
 // let audioChunks = [];
 
@@ -149,6 +150,7 @@
 //                 });
 
 
+const Listing = require("../models/listing.js");
 
 
 let mediaRecorder;
@@ -184,13 +186,14 @@ document.getElementById('stopButton').addEventListener('click', () => {
 });
 
 // Adding the upload button event listener only once
-document.getElementById('uploadButton').addEventListener('click', async () => {
+document.getElementById('uploadButton').addEventListener('click', async (req,res) => {
     try {
         const formData = new FormData();
         const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
         formData.append('audio', audioBlob, 'recording.mp3');
-        let { id } = listingId;  // Ensure 'listingId' is defined in your context
-        const response = await fetch(`/listings/${id}/uploads`, {
+        let { id } = req.params.id;
+        let listingID = await Listing.findById(id); 
+        const response = await fetch(`/listings/${listingID}/uploads`, {
             method: 'POST',
             body: formData
         });

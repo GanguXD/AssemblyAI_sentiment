@@ -18,7 +18,11 @@ module.exports.saveRedirectUrl = (req, res, next) => {
   }
   next();
 };
-
+module.exports.isListing = async(req,res,next) =>{
+  const {id} = req.params;
+  const listingID = await Listing.findById(id);
+  return listingID;
+}
 module.exports.isOwner = async (req, res, next) => {
   const { id } = req.params;
   
